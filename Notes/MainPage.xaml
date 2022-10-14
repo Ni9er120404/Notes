@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 x:Class="Notes.MainPage"
+			 xmlns:viemodel="clr-namespace:Notes.ViewModel"
+			 x:DataType="viemodel:MainViewModel">
+	
+	<Grid ColumnDefinitions="0.75*,0.25*"
+		  RowDefinitions="100,Auto,*"
+		  Margin="10,10,10,10">
+		
+		<Image
+			Source="dotnet_bot.svg"
+			Grid.ColumnSpan="2"
+			BackgroundColor="Transparent">
+		</Image>
+
+		<Entry
+			Placeholder="Enter your message"
+			Text="{Binding Text}"
+			Grid.Row="1"
+			Margin="10,10,10,10">
+		</Entry>
+
+		<Button
+			Grid.Row="1"
+			Grid.Column="1"
+			Text="Add"
+			Margin="10,10,10,10"
+			Command="{Binding AddCommand}">
+		</Button>
+
+		<CollectionView Grid.Row="2" Grid.ColumnSpan="2"
+						ItemsSource="{Binding Items}">
+			<CollectionView.ItemTemplate>
+				<DataTemplate x:DataType="{x:Type x:String}">
+					<SwipeView>
+						<SwipeView.RightItems>
+							<SwipeItems>
+								<SwipeItem Text="Delete"
+										   BackgroundColor="Red"
+										   
+										   Command="{Binding Source={RelativeSource AncestorType={x:Type viemodel:MainViewModel}}, Path=DeleteCommand}"
+										   CommandParameter="{Binding .}">
+								</SwipeItem>
+							</SwipeItems>
+						</SwipeView.RightItems>
+
+						<Grid>
+							<Frame CornerRadius="0">
+								<Label Text="{Binding .}"
+									   FontSize="24">
+								</Label>
+							</Frame>
+						</Grid>
+					</SwipeView>
+				</DataTemplate>
+			</CollectionView.ItemTemplate>
+		</CollectionView>
+	</Grid>
+</ContentPage>
