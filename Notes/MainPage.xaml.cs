@@ -1,5 +1,4 @@
 ﻿using Notes.ViewModel;
-using System.Text;
 
 namespace Notes
 {
