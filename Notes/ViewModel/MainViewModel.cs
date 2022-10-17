@@ -1,7 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.Input;
-using System.Text;
+using System.Collections.ObjectModel;
 
 namespace Notes.ViewModel
 {
@@ -37,6 +36,11 @@ namespace Notes.ViewModel
 				Items.Remove(s);
 			}
 		}
-		
+
+		[RelayCommand]
+		private async Task Tap(string s)
+		{
+			await Shell.Current.GoToAsync($"{nameof(DetailPage)}? Text={s}");
+		}
 	}
 }
