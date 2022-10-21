@@ -16,6 +16,7 @@
 		</Image>
 
 		<Entry
+			x:Name="Entry1"
 			Placeholder="Enter your message"
 			Text="{Binding Text}"
 			Grid.Row="1"
@@ -30,9 +31,11 @@
 			Command="{Binding AddCommand}">
 		</Button>
 
-		<CollectionView Grid.Row="2" Grid.ColumnSpan="2"
+		<CollectionView Grid.Row="2"
+						Grid.ColumnSpan="2"
 						ItemsSource="{Binding Items}"
 						SelectionMode="None">
+			
 			<CollectionView.ItemTemplate>
 				<DataTemplate x:DataType="{x:Type x:String}">
 					<SwipeView>
@@ -40,7 +43,6 @@
 							<SwipeItems>
 								<SwipeItem Text="Delete"
 										   BackgroundColor="Red"
-										   
 										   Command="{Binding Source={RelativeSource AncestorType={x:Type viemodel:MainViewModel}}, Path=DeleteCommand}"
 										   CommandParameter="{Binding .}">
 								</SwipeItem>
