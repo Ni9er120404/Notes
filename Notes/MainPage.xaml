@@ -16,7 +16,6 @@
 		</Image>
 
 		<Entry
-			x:Name="Entry1"
 			Placeholder="Enter your message"
 			Text="{Binding Text}"
 			Grid.Row="1"
